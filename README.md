@@ -48,7 +48,6 @@ The goal of this project is to group different car models based on features such
 - Standardization improved the efficiency of clustering algorithms.
 
 ## Analysis Method
-
 ### Principal Component Analysis (PCA)
 
 - **Why PCA?**
