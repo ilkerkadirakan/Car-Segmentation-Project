@@ -37,7 +37,7 @@ st.write("### Data Overview")
 data = pd.read_excel("2.xlsx")
 st.dataframe(data.head())
 
-st.image("graphs\step2_initial_data_distribution.png", use_container_width=True)
+st.image("graphs/step2_initial_data_distribution.png", use_container_width=True)
 
 numerical_columns = data.select_dtypes(include=['int64', 'float64']).columns.tolist()
 categorical_columns = data.select_dtypes(include=['object']).columns.tolist()
@@ -45,7 +45,7 @@ categorical_columns = data.select_dtypes(include=['object']).columns.tolist()
 st.write(f"Numerical Columns: {len(numerical_columns)}")
 st.write(f"Categorical Columns: {len(categorical_columns)}")
 
-st.image("graphs\step2_column_distribution.png", use_container_width=True)
+st.image("graphs/step2_column_distribution.png", use_container_width=True)
 
 
 
@@ -66,10 +66,10 @@ st.write("Missing values filled using median (numerical) and mode (categorical).
 
 from openpyxl import load_workbook
 
-wb = load_workbook("sheets\step3_filled_data_highlighted.xlsx")
+wb = load_workbook("sheets/step3_filled_data_highlighted.xlsx")
 ws = wb.active
 
-filled_data = pd.read_excel("sheets\step3_filled_data_highlighted.xlsx", header=0, engine='openpyxl')
+filled_data = pd.read_excel("sheets/step3_filled_data_highlighted.xlsx", header=0, engine='openpyxl')
 background_color_mask = []
 for row in ws.iter_rows(min_row=2):  # Başlık satırını atla
     row_colors = []
@@ -107,14 +107,14 @@ for col in numerical_columns:
 
 st.write("Distribution of numerical columns before and after outlier handling:")
 st.write("Before:")
-st.image("graphs\step3_before_cleaning_data_distribution.png", use_container_width=True)
+st.image("graphs/step3_before_cleaning_data_distribution.png", use_container_width=True)
 st.write("After:")
-st.image("graphs\step3_cleaned_data_distribution.png", use_container_width=True)
+st.image("graphs/step3_cleaned_data_distribution.png", use_container_width=True)
 
 st.write("Outliers removed using IQR method. ✅")
 
 st.write("### Data After Preprocessing")
-path = "sheets\step3_prepared_data_highlighted.xlsx"
+path = "sheets/step3_prepared_data_highlighted.xlsx"
 prepared_data = pd.read_excel(path, header=0, engine='openpyxl')
 wb=load_workbook(path)
 ws=wb.active
