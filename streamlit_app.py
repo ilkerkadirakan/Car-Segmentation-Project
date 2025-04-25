@@ -37,6 +37,38 @@ st.write("### Data Overview")
 data = pd.read_excel("2.xlsx")
 st.dataframe(data.head())
 
+st.write("### Data Dictionary")
+st.write("""
+| **Column Name** | **Data Type** | **Description** |
+|------------------|---------------|------------------|
+| `manufact`       | String        | Car manufacturer or brand (e.g., Ford, Honda, BMW). |
+| `model`          | String        | Specific model name of the vehicle (e.g., Accord, Explorer). |
+| `sales`          | Float         | Number of units sold (in thousands). Represents market demand. |
+| `resale`         | Float         | Estimated resale value of the vehicle after a certain period (likely 3-5 years). Indicates value retention. |
+| `type`           | Integer       | Car category indicator: 0 = Passenger car (sedan, hatchback, coupe), 1 = Utility/commercial (SUVs, pickups, vans). |
+| `price`          | Float         | Manufacturer's suggested retail price (in thousands of dollars). |
+| `engine_s`       | Float         | Engine size in liters (e.g., 2.0L, 3.5L). Larger sizes usually indicate more power. |
+| `horsepow`       | Float         | Horsepower (HP) of the vehicle. A measure of engine power. |
+| `wheelbas`       | Float         | Wheelbase length in inches — the distance between front and rear axles. Affects ride comfort and space. |
+| `width`          | Float         | Width of the car in inches. |
+| `length`         | Float         | Length of the car in inches. |
+| `curb_wgt`       | Float         | Curb weight in pounds — the total weight of the vehicle without passengers or cargo. |
+| `fuel_cap`       | Float         | Fuel tank capacity in gallons. |
+| `mpg`            | Float         | Fuel efficiency: miles per gallon. Higher is better for economy. |
+| `lnsales`        | Float         | Natural log of the sales column. Used for normalization or regression analysis. |
+| `zresale`        | Float         | Standardized (z-score) resale value. Shows how many standard deviations each resale value is from the mean. |
+| `ztype`          | Float         | Standardized version of type. Not usually meaningful unless used in statistical models. |
+| `zprice`         | Float         | Standardized price value. |
+| `zengine_`       | Float         | Standardized engine size. |
+| `zhorsepo`       | Float         | Standardized horsepower. |
+| `zwheelba`       | Float         | Standardized wheelbase. |
+| `zwidth`         | Float         | Standardized width. |
+| `zlength`        | Float         | Standardized length. |
+| `zcurb_wg`       | Float         | Standardized curb weight. |
+| `zfuel_ca`       | Float         | Standardized fuel capacity. |
+| `zmpg`           | Float         | Standardized fuel efficiency (mpg). |
+""")
+
 st.image("graphs/step2_initial_data_distribution.png", use_container_width=True)
 
 numerical_columns = data.select_dtypes(include=['int64', 'float64']).columns.tolist()
