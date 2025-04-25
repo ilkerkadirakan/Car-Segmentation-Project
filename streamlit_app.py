@@ -95,7 +95,7 @@ for col in numerical_columns:
 for col in categorical_columns:
     data[col].fillna(data[col].mode()[0], inplace=True)
 
-st.write("Missing values filled using median (numerical) and mode (categorical). ✅")
+st.write("Missing values filled using median (numerical) and mode (categorical).")
 
 from openpyxl import load_workbook
 
@@ -123,7 +123,7 @@ if 'manufact' in categorical_columns and 'model' in categorical_columns:
     data['manufact_model'] = data['manufact'] + '_' + data['model']
     label_encoder = LabelEncoder()
     data['manufact_model_encoded'] = label_encoder.fit_transform(data['manufact_model'])
-    st.write("Combined and encoded manufacturer & model information. ✅")
+    st.write("Combined and encoded manufacturer & model information.")
 
     st.write("### Encoded Data")
     st.dataframe(data[['manufact', 'model', 'manufact_model', 'manufact_model_encoded']].head())
