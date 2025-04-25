@@ -16,19 +16,19 @@ import warnings
 warnings.filterwarnings("ignore")
 
 # Başlık
-st.title("🚗 Vehicle Customer Segmentation")
+st.title("Vehicle Customer Segmentation")
 st.markdown("""
 ### **Data Mining Final Project**
 #### **Vehicle Customer Segmentation Analysis**
 This application showcases the customer segmentation process for vehicles based on their specifications and pricing.
 
-📌 **Project Goals:**
+**Project Goals:**
 - Identify automobiles that serve similar customer needs.
 - Understand consumer preferences based on specifications and pricing.
 - Optimize product management and strategic planning for manufacturers.
 - Provide data-driven insights for automakers to retain and grow market share.
 
-📖 **Dataset Description:**
+**Dataset Description:**
 The dataset consists of **157 rows** and **26 columns**, containing both numerical and categorical data. It includes vehicle specifications such as price, engine size, horsepower, dimensions, fuel capacity, and efficiency.
 """)
 
@@ -69,6 +69,7 @@ st.write("""
 | `zmpg`           | Float         | Standardized fuel efficiency (mpg). |
 """)
 
+st.write("### Initial Data Distribution")
 st.image("graphs/step2_initial_data_distribution.png", use_container_width=True)
 
 numerical_columns = data.select_dtypes(include=['int64', 'float64']).columns.tolist()
@@ -143,7 +144,7 @@ st.image("graphs/step3_before_cleaning_data_distribution.png", use_container_wid
 st.write("After:")
 st.image("graphs/step3_cleaned_data_distribution.png", use_container_width=True)
 
-st.write("Outliers removed using IQR method. ✅")
+st.write("Outliers removed using IQR method.")
 
 st.write("### Data After Preprocessing")
 path = "sheets/step3_prepared_data_highlighted.xlsx"
@@ -175,7 +176,7 @@ st.download_button("Download Preprocessed Data",csv_file, "prepared_data.csv")
 st.write("### Standardizing Data")
 scaler = MinMaxScaler()
 X_scaled = scaler.fit_transform(data[numerical_columns])
-st.write("Data standardized using MinMaxScaler. ✅")
+st.write("Data standardized using MinMaxScaler.")
 
 st.write("### Standardized Data")
 st.dataframe(pd.DataFrame(X_scaled, columns=numerical_columns).head())
@@ -186,7 +187,7 @@ pca = PCA(n_components=2)
 X_pca = pca.fit_transform(X_scaled)
 data['PCA1'] = X_pca[:, 0]
 data['PCA2'] = X_pca[:, 1]
-st.write("PCA applied to reduce dimensions. ✅")
+st.write("PCA applied to reduce dimensions.")
 
 plt.figure(figsize=(12, 6))
 plt.scatter(X_pca[:, 0], X_pca[:, 1], alpha=0.7)
